@@ -23,3 +23,24 @@ def plot_bar_chart(x, y, x_label, y_label, title, show_plot=True, save_path=None
 
     if show_plot:
         plt.show()
+
+
+def plot_pie_chart(y, y_labels, title, show_plot=True, save_path=None):
+    """
+    This functions is to draw pie chart from the given y.
+    :param y: is a list of elements that represents the portion of the pie chart
+    :param y_labels: is a list of strings that represents the label parameter
+    :param title: title name of pie chart
+    :param show_plot: True to show the plot, otherwise False
+    :param save_path: path to save the plot, None if not willing to save
+    :return: a pie chart
+    """
+    plt.pie(y, labels=y_labels)
+    plt.title(title)
+
+    if save_path:
+        plt.savefig(save_path, dpi=1000)
+
+    if show_plot:
+        plt.show()
+
