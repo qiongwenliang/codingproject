@@ -1,4 +1,6 @@
 from matplotlib import pyplot as plt
+from scipy.stats import norm
+import numpy as np
 
 
 def plot_bar_chart(x, y, x_label, y_label, title, show_plot=True, save_path=None):
@@ -69,3 +71,26 @@ def plot_histogram(x, bins, x_label, y_label, title, show_plot=True, save_path=N
 
     if show_plot:
         plt.show()
+
+
+def plot_GaussianDistribution(data, bins, x_label, y_label):
+    """
+    This function is to draw Gaussian Distribution from the given data.
+    :param data: sequence of data.
+    :param bins: integer or sequence or string.
+    :param x_label: value name of x-axis.
+    :param y_label: value name of y-axis.
+    :return: a histogram chart and gaussian distribution.
+    """
+    mu, std = norm.fit(data)
+    plt.hist(data, bins, density=True)
+    xmin, xmax = plt.xlim()
+    x = np.linspace(xmin, xmax, 100)
+    p = norm.pdf(x, mu, std)
+    plt.plot(x, p)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    title = "Fit results: mu = %.2f, std = %.2f" %(mu, std)
+    plt.title(title)
+
+    plt.show()
