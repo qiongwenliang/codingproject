@@ -5,7 +5,7 @@ import csv
 class ParseData:
     def __init__(self, path):
         """
-        This class is to parse csv document and put it into python data structures that will ready to be used.
+        This class is to parse csv document and put it into python data structures that is ready to be used.
         :param path: path to the csv file.
         """
         file_obj = open(path, 'r')

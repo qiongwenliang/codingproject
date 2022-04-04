@@ -1,5 +1,6 @@
-from matplotlib import pyplot as plt
-from scipy.stats import norm
+import matplotlib.pyplot as plt
+import scipy.stats as norm
+import scipy.stats as ss
 import numpy as np
 
 
@@ -94,3 +95,27 @@ def plot_GaussianDistribution(data, bins, x_label, y_label):
     plt.title(title)
 
     plt.show()
+
+
+def plot_ExponentialDistribution(data):
+    """
+    This function is to draw Exponential Distribution from the given data.
+    :param data: sequence of data.
+    :return: a histogram chart and exponential distribution.
+    """
+    plt.hist(data, density=True)
+    p = ss.expon.fit(data)
+    xmin, xmax = plt.xlim()
+    rX = np.linspace(1, xmax, 100)
+    rP = ss.expon.pdf(rX, *p)
+    plt.plot(rX, rP)
+
+    plt.show()
+
+
+
+
+
+
+
+
